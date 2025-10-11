@@ -277,6 +277,8 @@ class DuckDuckGoWebView :
                 hasGestureFinished = true
                 returnValue = super.onTouchEvent(event)
                 stopNestedScroll()
+                // Re-enable after gesture ends
+                enableSwipeRefresh(true)
             }
 
             MotionEvent.ACTION_MOVE -> {
@@ -445,9 +447,7 @@ class DuckDuckGoWebView :
 
     private fun setContentAllowsSwipeToRefresh(allowed: Boolean) {
         contentAllowsSwipeToRefresh = allowed
-        if (!allowed) {
-            enableSwipeRefresh(false)
-        }
+        enableSwipeRefresh(allowed)
     }
 
     fun isDestroyed(): Boolean = isDestroyed

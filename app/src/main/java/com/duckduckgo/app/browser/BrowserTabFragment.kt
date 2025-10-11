@@ -1712,6 +1712,8 @@ class BrowserTabFragment :
             errorView.yetiIcon.setImageResource(com.duckduckgo.mobile.android.R.drawable.ic_yeti_dark)
         }
         errorView.errorLayout.show()
+        binding.swipeRefreshContainer.isRefreshing = false
+
     }
 
     private fun showMaliciousWarning(
@@ -3175,7 +3177,7 @@ class BrowserTabFragment :
             }
 
             it.setEnableSwipeRefreshCallback { enable ->
-                binding.swipeRefreshContainer?.isEnabled = enable
+                binding.swipeRefreshContainer.isEnabled = enable
             }
 
             registerForContextMenu(it)
